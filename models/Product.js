@@ -45,6 +45,14 @@ const productSchema = mongoose.Schema({
             values: ["in-stock", "out-of-stock"],
             massege: "status can't be {VALUE} must be in-stock/out-of-stock"
         }
+    },
+    quantity: {
+        type: Number,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true,
     }
 },
     {

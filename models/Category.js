@@ -14,7 +14,7 @@ const categorySchema = mongoose.Schema({
     photoUrl: {
         type: String,
     },
-    products: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+    products: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 },
     {
         timestamps: true
