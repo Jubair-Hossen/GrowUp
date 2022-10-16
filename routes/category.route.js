@@ -1,13 +1,14 @@
 const express = require('express');
-const { createCategoryControler, getCategoryByIdControler } = require('../controlers/category.controler');
+const { createCategoryControler, getCategoryByIdControler, getAllCategoryControler, updateCategoryControler } = require('../controlers/category.controler');
+const verifyJwt = require('../middlewares/verifyJwt');
 const router = express.Router();
 
 router.route('/')
     .post(createCategoryControler)
-// .get(get)
+    .get(getAllCategoryControler)
 
 router.route('/:id')
-    .get(getCategoryByIdControler)
-//     .patch(updateUserControler)
+    .get(verifyJwt, getCategoryByIdControler)
+    .patch(updateCategoryControler)
 
 module.exports = router;
