@@ -11,8 +11,17 @@ const categorySchema = mongoose.Schema({
         lowercase: true,
         required: true
     },
+    description: {
+        type: String,
+        minLength: [10, "invalid name"],
+        maxLength: [500, 'invalid name'],
+        trim: true,
+        lowercase: true,
+        required: true
+    },
     photoUrl: {
         type: String,
+        required: true,
     },
     products: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 },

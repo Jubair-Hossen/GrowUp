@@ -1,11 +1,12 @@
 const express = require('express');
 const { createProductControler, getAllProductControler, getProductByIdControler, updateProductControler } = require('../controlers/product.controler');
+const verifyToken = require('../middlewares/verifyToken');
 
 const router = express.Router();
 
 router.route('/')
     .post(createProductControler)
-    .get(getAllProductControler)
+    .get(verifyToken, getAllProductControler)
 
 router.route('/:id')
     .get(getProductByIdControler)

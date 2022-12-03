@@ -23,8 +23,7 @@ const userSchema = mongoose.Schema({
     phone: {
         type: String,
         minLength: [11, 'invalid phone number'],
-        maxLength: [11, 'invalid phone number'],
-        unique: true
+        maxLength: [11, 'invalid phone number']
     },
     photoUrl: {
         type: String,

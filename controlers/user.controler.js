@@ -1,13 +1,11 @@
-const genarateToken = require("../middlewares/createToken");
 const User = require("../models/User")
 
 exports.CreateUserControler = async (req, res) => {
     try {
         const result = await User.create(req.body);
-        const token = genarateToken({ name: req.body.name, email: req.body.email })
         res.status(200).json({
             success: true,
-            token
+            result
         })
     } catch (error) {
         res.status(400).json({
@@ -48,18 +46,27 @@ exports.getUserByIdControler = async (req, res) => {
 }
 
 exports.updateUserControler = async (req, res) => {
-    try {
-        const filter = { _id: req.params.id };
-        const doc = req.body;
-        const result = await User.updateOne(filter, doc, { runValidators: true });
-        res.status(200).json({
-            success: true,
-            data: result
-        })
-    } catch (error) {
-        res.status(400).json({
-            success: false,
-            error: error.massege
-        })
-    }
+    // try {
+    // const filter = { email: req.params.email };
+    // const doc = req.body;
+    // doc.email = req.decoded.email;
+    // doc.role = "customer";
+    // if (req.decoded.email === req.params.email) {
+    //     const result = await User.updateOne(filter, doc, { runValidators: true, upsert: true });
+    //     res.status(200).json({
+    //         success: true,
+    //         data: result
+    //     })
+    // } else {
+    //     res.status(401).json({
+    //         success: false,
+    //         error: "unauthorized access"
+    //     })
+    // }
+    // } catch (error) {
+    //     res.status(400).json({
+    //         success: false,
+    //         error: error.message
+    //     })
+    // }
 }
